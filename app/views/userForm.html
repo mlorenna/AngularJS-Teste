@@ -1,0 +1,42 @@
+<div class="custom-card">
+    <h4>Preencha o formulário para cadastrar um usuário.</h4>
+    <form novalidate name="form" action="">
+        <div ng-show="submit && !form.$valid" class="alert alert-danger" role="alert">
+            Preencha o formulário corretamente
+        </div>
+        <div class="form-group">
+            <label for="">Nome</label>
+            <input type="text" class="form-control" minlength="3" ng-model="user.name" name="uName" required="true">
+            <span class="span-error" ng-show="form.uName.$dirty && form.uName.$error.required">Campo obrigatório. <br></span>
+            <span class="span-error" ng-show="form.uName.$dirty && form.uName.$error.minlength">Campo não atende número mínimo de
+                caracteres. <br></span>
+            <label for="">Telefone</label>
+            <div class="row">
+                <div class="col-2">
+                    <input type="tel" class="form-control" minlength="2" maxlength="3" ng-model="user.ddd" name="uDDD"
+                        ng-required="true">
+                </div>
+                <div class="col-10">
+                    <input type="tel" class="form-control" minlength="8" maxlength="9" ng-model="user.telefone"
+                        name="uTel" ng-required="true">
+                </div>
+            </div>
+            <span class="span-error" ng-show="form.uTel.$dirty && form.uTel.$error.required">Campo obrigatório. <br></span>
+            <span class="span-error" ng-show="form.uDDD.$dirty && form.uDDD.$error.minlength">Digite um DDD válido. <br></span>
+            <span class="span-error" ng-show="form.uTel.$dirty && form.uTel.$error.minlength || form.uTel.$error.maxlength">Digite um número válido.<br></span>
+            <label for="">Endereço</label>
+            <input type="text" class="form-control" minlength="12" ng-model="user.address" name="uAddr" ng-required="true">
+            <span class="span-error" ng-show="form.uAddr.$dirty && form.uAddr.$error.required">Campo obrigatório. <br></span>
+            <span class="span-error" ng-show="form.uAddr.$dirty && form.uAddr.$error.minlength">Digite um endereço válido. <br></span>
+            <label for="">Complemento</label>
+            <input type="text" class="form-control" minlength="3" ng-model="user.addressComplement" name="uAddrCompl">
+            <label for="">Data de Admissão</label>
+            <input type="date" class="form-control" ng-model="user.admissionDate" name="uAdmDate" ng-required="true">
+            <span class="span-error" ng-show="form.uAdmDate.$dirty && form.uAdmDate.$error.required">Campo obrigatório. <br></span>
+            <input type="button" class="btn btn-lg button clean" ng-click="cleanUserForm(user, form)"
+                value="Limpar">
+            <input type="submit" class="btn btn-lg button submit" ng-disabled="!form.$valid" ng-click="submitUserForm(user)" value="Criar">
+        </div>
+    </form>
+    <span>Master: {{user}} <br></span>
+</div>

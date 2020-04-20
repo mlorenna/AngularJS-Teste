@@ -1,0 +1,42 @@
+<div class="custom-card">
+    <h4>Preencha o formulário para cadastrar um curso.</h4>
+    <form novalidate name="form" action="">
+        <div ng-show="submit && !form.$valid" class="alert alert-danger" role="alert">
+            Preencha o formulário corretamente
+        </div>
+        <div class="form-group">
+            <label for="">Título</label>
+            <input type="text" class="form-control" minlength="6" ng-model="course.title" name="cTitle" required="true">
+            <span class="span-error" ng-show="form.cTitle.$dirty && form.cTitle.$error.required">Campo obrigatório.
+                <br></span>
+            <span class="span-error" ng-show="form.cTitle.$dirty && form.cTitle.$error.minlength">Campo não atende
+                número mínimo de caracteres<br></span>
+            <label for="">Carga Horária</label>
+            <input type="number" class="form-control" ng-model="course.workload" name="cWorkLoad" ng-required="true">
+            <span class="span-error" ng-show="form.cWorkLoad.$dirty && form.cWorkLoad.$error.required">Campo
+                obrigatório. <br></span>
+            <span class="span-error" ng-show="form.cWorkLoad.$dirty && form.cWorkLoad.$error.integer">Digite uma carga
+                horária válida.<br></span>
+            <label for="">Valor do curso</label>
+            <input type="text" class="form-control" ng-model="course.cost" name="cCost">
+            <span class="span-error" ng-show="form.cCost.$dirty && form.cCost.$error.required">Campo obrigatório.
+                <br></span>
+            <span class="span-error" ng-show="form.cCost.$dirty && form.cCost.$error.integer">Digite um valor
+                válido.<br></span>
+            <label for="">Descrição do curso</label>
+            <textarea class="form-control" cols="30" rows="5" minlength="30" ng-model="course.description"
+                name="cDescription"></textarea>
+            <span class="span-error" ng-show="form.cDescription.$dirty && form.cDescription.$error.minlength">Campo não
+                atende número mínimo de caracteres<br></span>
+            <label for="">Deseja adicionar um usuário já cadastro ao curso?</label>
+            <select ng-show="users.length != 0" class="form-control" ng-model="course.users" multiple name="cUser">
+                <option ng-repeat="u in users" value="{{u}}">{{u.name}} - {{u.admissionDate | date: "dd/MM/yyyy"}}</option>
+            </select>
+            <span class="span-warning" ng-show="users.length == 0"> Ainda não existem usuários cadastrados. <br></span>
+            <input type="button" class="btn btn-lg button clean" ng-click="cleanCourseForm(form)" value="Limpar">
+            <input type="submit" class="btn btn-lg button submit" ng-disabled="!form.$valid"
+                ng-click="submitCourseForm(course, form)" value="Criar">
+        </div>
+    </form>
+    <span>Master: {{course}}</span>
+</div>

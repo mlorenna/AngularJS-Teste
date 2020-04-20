@@ -1,0 +1,40 @@
+<div class="custom-card">
+    <h4>Lista de cursos cadastrados</h4>
+    <table class="table courses m-b-5">
+        <thead>
+            <tr>
+                <th scope="col">Titulo</th>
+                <th scope="col">Carga horária</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Usuários</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="c in courses">
+                <td>{{c.title}}</td>
+                <td>{{c.workload}}</td>
+                <td>R${{c.cost}}</td>
+                <td><button type="button" class="btn btn-outline-danger" ng-click="openTable($index)">Ver</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="custom-card">
+<h4>Lista de usuário curso {{selectCourse.title}}</h4>
+<table class="table users">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Data Admissão</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="u in selectCourseUsers">
+            <td>{{u.name}}</td>
+            <td>{{u.admissionDate | date: "dd/MM/yyyy"}}</td>
+            <td><button type="button" class="btn btn-outline-danger" ng-click="deleteUserFromCourse($index)">Excluir</button></td>
+        </tr>
+    </tbody>
+</table>
+</div>

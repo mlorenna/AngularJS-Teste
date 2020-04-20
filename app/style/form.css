@@ -1,0 +1,21 @@
+label{
+    color: #404040;
+    font-weight: bold;
+}
+span.span-error{
+    color: tomato;
+}
+span.span-warning{
+    margin-left: 10px;
+}
+.button{
+    margin: 10px 10px 0 0;
+}
+.button.submit{
+    color: white;
+    background-color: #C13A43;
+}
+.button.clean{
+    background-color: white;
+    color: #C13A43;
+}
